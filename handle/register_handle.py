@@ -1,4 +1,4 @@
-
+# coding=utf-8
 from page.register_page import RegisterPage
 from PIL import Image
 class RegisterHandle:
