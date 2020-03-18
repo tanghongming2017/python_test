@@ -29,7 +29,7 @@ class RegisterCase(unittest.TestCase):
         chrome_options.add_argument('--no-sandbox')
         chrome_options.add_argument('--disable-dev-shm-usage')
         # chrome_options.add_argument('--headless')
-        self.driver = webdriver.Chrome(options=chrome_options)
+        self.driver = webdriver.Chrome(chrome_options=chrome_options)
         self.driver.get("http://www.yundama.com/index/reg")
         self.driver.maximize_window()
         self.register_business = RegisterBusiness(self.driver)
