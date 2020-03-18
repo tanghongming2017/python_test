@@ -1,6 +1,7 @@
 # coding=utf-8
 
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from business.register_business import RegisterBusiness
 from util.common_util import *
 import unittest
@@ -24,7 +25,11 @@ class RegisterCase(unittest.TestCase):
 
     def setUp(self):
         self.user_log.get_logger().info("setUp")
-        self.driver = webdriver.Chrome()
+        chrome_options = Options()
+        chrome_options.add_argument('--no-sandbox')
+        chrome_options.add_argument('--disable-dev-shm-usage')
+        # chrome_options.add_argument('--headless')
+        self.driver = webdriver.Chrome(options=chrome_options)
         self.driver.get("http://www.yundama.com/index/reg")
         self.driver.maximize_window()
         self.register_business = RegisterBusiness(self.driver)
