@@ -12,7 +12,7 @@ class UserLog:
         log_name = datetime.datetime.now().strftime("%Y-%m-%d") + ".log"
         log_path = PathUtil.get_file_path(f"logs/{log_name}")
         # 文件输出
-        self.file_handle = logging.FileHandler(log_path)
+        self.file_handle = logging.FileHandler(log_path, encoding='utf-8')
         formatter = logging.Formatter('%(asctime)s %(filename)s %(funcName)s %(levelno)s %(levelname)s %(message)s')
         self.file_handle.setFormatter(formatter)
         self.file_handle.setLevel(logging.INFO)
