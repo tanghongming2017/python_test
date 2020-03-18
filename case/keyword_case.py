@@ -1,16 +1,14 @@
 # coding=utf-8
-import sys
-import os
-sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
 from util.excel_util import ExcelUtil
 from util.action_method import ActionMethod
+from util.path_util import PathUtil
 
 
 class KeywordCase:
 
     def run_main(self):
-        file_path = os.path.join(os.path.dirname(os.path.abspath(os.path.join(os.path.dirname(__file__)))), "conf/keyword.xls")
+        file_path = PathUtil.get_file_path("conf/keyword.xls")
         excel = ExcelUtil(file_path)
         rows = excel.get_lines()
         action_method = ActionMethod()

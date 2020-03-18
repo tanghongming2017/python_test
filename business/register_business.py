@@ -1,17 +1,17 @@
 # coding=utf-8
-import os
 import time
 
 from handle.register_handle import RegisterHandle
 from util.common_util import *
 from selenium.webdriver.support import expected_conditions as EC
+from util.path_util import PathUtil
 
 
 class RegisterBusiness:
     def __init__(self, driver):
         self.driver = driver
         self.register_handle = RegisterHandle(driver)
-        self.file_name = "img/code.png"
+        self.file_name = PathUtil.get_file_path("img/code.png")
 
     # 输入错误的用户名
     def send_username_error(self, username):

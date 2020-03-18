@@ -1,20 +1,16 @@
 # coding=utf-8
 import logging
-import os
 import datetime
+from util.path_util import PathUtil
 
 
 class UserLog:
     def __init__(self):
         self.logger = logging.getLogger()
         self.logger.setLevel(logging.DEBUG)
-        # 控制台输出
-        # console = logging.StreamHandler()
-        # logger.addHandler(console)
 
-        base_dir = os.path.dirname(os.path.abspath(__file__))
         log_name = datetime.datetime.now().strftime("%Y-%m-%d") + ".log"
-        log_path = os.path.join(base_dir, "logs", log_name)
+        log_path = PathUtil.get_file_path(f"logs/{log_name}")
         # 文件输出
         self.file_handle = logging.FileHandler(log_path)
         formatter = logging.Formatter('%(asctime)s %(filename)s %(funcName)s %(levelno)s %(levelname)s %(message)s')

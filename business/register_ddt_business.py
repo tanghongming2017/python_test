@@ -1,18 +1,18 @@
 # coding=utf-8
-import os
 import time
 
 from handle.register_handle import RegisterHandle
 from util.common_util import *
 from selenium.webdriver.support import expected_conditions as EC
 
+from util.path_util import PathUtil
+
 
 class RegisterDDTBusiness:
     def __init__(self, driver):
         self.driver = driver
         self.register_handle = RegisterHandle(driver)
-        self.file_name = os.path.join(os.path.dirname(os.path.abspath(os.path.join(os.path.dirname(__file__)))),
-                                 "img/code.png")
+        self.file_name = PathUtil.get_file_path("img/code.png")
 
     def register_main(self, username, password, password2, email, answer, vcode, assert_text):
         self.register_handle.send_username_element(username)

@@ -1,6 +1,5 @@
 # coding=utf-8
 import time
-
 from selenium import webdriver
 from base.find_element import FindElement
 
@@ -9,7 +8,7 @@ class ActionMethod:
 
     def open_browser(self, browser):
         if browser == 'chrome':
-            self.webdriver = webdriver.Chrome('C:\\Users\\TEST\\AppData\\Local\\Google\\Chrome\\Application\\chromedriver.exe')
+            self.webdriver = webdriver.Chrome()
         elif browser == 'firefox':
             self.webdriver = webdriver.Firefox()
         else:

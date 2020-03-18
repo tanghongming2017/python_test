@@ -1,13 +1,13 @@
-#coding=utf-8
-import sys
-print(sys.path)
+# coding=utf-8
+
 from selenium import webdriver
 from business.register_business import RegisterBusiness
 from util.common_util import *
 import unittest
 from util.html_test_runner import HTMLTestRunner
 
-from log.user_log import UserLog
+from util.user_log import UserLog
+from util.path_util import PathUtil
 
 
 class RegisterCase(unittest.TestCase):
@@ -75,7 +75,7 @@ class RegisterCase(unittest.TestCase):
         testSuite = unittest.TestSuite()
         testSuite.addTest(RegisterCase('test_register_code_error'))
         testSuite.addTest(RegisterCase('test_login_success'))
-        file_path = "report\\RegisterReport.html"
+        file_path = PathUtil.get_file_path("report/RegisterReport.html")
         f = open(file_path, 'wb')
         html_test = HTMLTestRunner(stream=f, title='RegisterReport', description='这是一个注册页面的报告')
         html_test.run(testSuite)

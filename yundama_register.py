@@ -1,7 +1,4 @@
 # coding=utf-8
-import sys
-import os
-sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 import random
 import time
 from aip import AipOcr
@@ -11,8 +8,7 @@ from selenium import webdriver
 from selenium.webdriver.support.wait import WebDriverWait
 from base.find_element import FindElement
 
-file_path = os.path.join(os.path.dirname(os.getcwd()),'driver/chromedriver.exe')
-wb = webdriver.Chrome(file_path)
+wb = webdriver.Chrome()
 password = 'test_zhangsan'
 answer_result = 'zhangsanfeng'
 find_element = FindElement(wb)

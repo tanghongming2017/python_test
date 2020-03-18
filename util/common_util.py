@@ -1,7 +1,7 @@
 # coding=utf-8
 import random
-
 from aip import AipOcr
+
 
 
 def get_code_text(file_name):

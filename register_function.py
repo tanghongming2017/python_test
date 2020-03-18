@@ -1,5 +1,4 @@
 # coding=utf-8
-import os
 import random
 import time
 
@@ -8,6 +7,8 @@ from aip import AipOcr
 from selenium import webdriver
 from base.find_element import FindElement
 from selenium.webdriver.support import expected_conditions as EC
+
+from util.path_util import PathUtil
 
 
 def get_user_name():
@@ -35,8 +36,7 @@ class RegisterFunction:
         self.find_element = FindElement(self.driver)
 
     def get_driver(self, url):
-        file_path = "driver/chromedriver.exe"
-        driver = webdriver.Chrome(file_path)
+        driver = webdriver.Chrome()
         driver.get(url)
         driver.maximize_window()
         return driver
@@ -86,8 +86,7 @@ class RegisterFunction:
         self.send_keys("password2", password)
         self.send_keys("email", email)
         self.send_keys("aq_answer", answer_result)
-
-        file_name = "img/code.png"
+        file_name = PathUtil.get_file_path("img/code.png")
         code_text = None
         count = 0
 
@@ -113,7 +112,7 @@ class RegisterFunction:
                     print("登录成功")
                 else:
                     print("登录失败")
-                    file_path = "img/fail_screenshot.png"
+                    file_path = PathUtil.get_file_path("img/fail_screenshot.png")
                     self.save_screenshot(file_path)
                 break
             else:

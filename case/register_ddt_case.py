@@ -1,24 +1,21 @@
 # coding=utf-8
-import sys
-import os
-sys.path.append(os.path.dirname(os.path.dirname(__file__)))
-
 from selenium import webdriver
 from business.register_ddt_business import RegisterDDTBusiness
 import unittest
 from util.html_test_runner import HTMLTestRunner
 from ddt import *
 from util.excel_util import ExcelUtil
+from util.path_util import PathUtil
 
-excel_util = ExcelUtil(os.path.join(os.path.dirname(os.path.abspath(os.path.join(os.path.dirname(__file__)))), "conf/case.xls"))
+excel_util = ExcelUtil(PathUtil.get_file_path("conf/case.xls"))
 datas = excel_util.get_data()
+
 
 @ddt
 class RegisterDDTCase(unittest.TestCase):
 
     def setUp(self):
-        file_path = webdriver.Chrome('C:\\Users\\TEST\\AppData\\Local\\Google\\Chrome\\Application\\chromedriver.exe')
-        self.driver = webdriver.Chrome(file_path)
+        self.driver = webdriver.Chrome()
         self.driver.get("http://www.yundama.com/index/reg")
         self.driver.maximize_window()
         self.register_business = RegisterDDTBusiness(self.driver)
@@ -36,8 +33,7 @@ class RegisterDDTCase(unittest.TestCase):
 
 if __name__ == '__main__':
     testSuite = unittest.TestLoader().loadTestsFromTestCase(RegisterDDTCase)
-    file_path = os.path.join(os.path.dirname(os.path.abspath(os.path.join(os.path.dirname(__file__)))),
-                             "report/RegisterDDTReport.html")
+    file_path = PathUtil.get_file_path("report/RegisterDDTReport.html")
     f = open(file_path, 'wb')
     html_test = HTMLTestRunner(stream=f, title='RegisterDDTReport', description='这是一个注册页面的报告')
     html_test.run(testSuite)

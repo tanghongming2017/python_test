@@ -1,8 +1,9 @@
 # coding=utf-8
-import os
 
 import xlrd
 from xlutils.copy import copy
+
+from util.path_util import PathUtil
 
 
 class ExcelUtil:
@@ -38,9 +39,9 @@ class ExcelUtil:
 
 
 if __name__ == '__main__':
-    file_path = "conf/keyword.xls"
+    file_path = PathUtil.get_file_path("conf/keyword.xls")
     execl = ExcelUtil(file_path)
     data = execl.get_cell_value(1, 4)
     print(data)
-    execl.write_cell_value(1, 6, "hello world")
+    # execl.write_cell_value(1, 6, "hello world")
 

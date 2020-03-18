@@ -1,12 +1,17 @@
 # coding=utf-8
 import configparser
 
+from util.path_util import PathUtil
+
 
 class ReadIni:
     """
     读取配置文件
     """
-    def __init__(self, file_name="conf/element.ini"):
+
+    def __init__(self, file_name=None):
+        if not file_name:
+            file_name = PathUtil.get_file_path("conf/element.ini")
         self.cf = self._load_ini(file_name)
 
     def _load_ini(self, file_name):
